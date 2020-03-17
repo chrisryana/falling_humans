@@ -58,3 +58,35 @@ body {
   visibility: hidden;
   opacity: 0;
 }
+
+
+.allow-motion-button {
+	opacity: 0;
+	visibility: hidden;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	bottom: 20px;
+	width: 225px;
+	height: 50px;
+	border-radius: 25px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: white;	
+	box-shadow: 0 0 30px rgba(0,0,0,0.15);
+	overflow: hidden;
+	padding: 0 5px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	transition: 0.15s ease all;
+	font-family: sans-serif;
+}
+.allow-motion-button.visible {
+	visibility: visible;
+	opacity: 1;
+}
+.allow-motion-text {
+	color: #1FAD70;
+	padding-left: 5px;
+}

@@ -1,4 +1,4 @@
-(function() {
+// (function() {
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var loadingScreen = document.getElementById('loader');
@@ -100,7 +100,7 @@
     context.clearRect(0, 0, canvas.width, canvas.height);
     TWEEN.update();
 
-    var rotateX = (pointer.y * -0.15) + (motion.y * 1.2);
+    var rotateX = (pointer.y * -0.15) + (motion.y * -1.2);
     var rotateY = (pointer.x * 0.15) + (motion.x * 1.2);
 
     canvas.style.transform = "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)";
@@ -111,7 +111,7 @@
       if (layer.blend) {
         context.globalCompositeOperation = layer.blend;
       } else {
-        context.globalCompositeOperation = 'normal';
+        context.globalCompositeOperation = 'source-over';
       }
 
       context.globalAlpha = layer.opacity;
@@ -207,6 +207,7 @@
   //// GYROSCOPE /////
 
   var motion = {x: 0, y: 0};
+  var motionButton = document.getElementById('.motionButton');
   var alpha = 0;
   var beta = 0;
   var totalX = 0;
@@ -216,8 +217,6 @@
   window.addEventListener("devicemotion", onDeviceMotion);
 
   function onDeviceMotion(event) {
-    motion_button.classList.remove('visible');
-  
     alpha = event.rotationRate.alpha;
     beta = event.rotationRate.beta;
     
@@ -259,4 +258,12 @@
     totalY = 0;	
   }
 
-})();
+  if (window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
+    motion_button.classList.add('visible');
+  }
+
+  function enableMotion() {
+    DeviceOrientationEvent.requestPermission();
+    motionButton.classList.remove('visible');
+  }
+// })();
