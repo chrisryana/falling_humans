@@ -206,61 +206,57 @@
 
   //// GYROSCOPE /////
 
-  var motionInitial = {x: null, y: null};
   var motion = {x: 0, y: 0};
+  var alpha = 0;
+  var beta = 0;
+  var totalX = 0;
+  var totalY = 0;
+  var maxOffset = 2000;
+  
+  window.addEventListener("devicemotion", onDeviceMotion);
 
-  window.addEventListener('deviceorientation', deviceOrientation);
+  function onDeviceMotion(event) {
+    motion_button.classList.remove('visible');
+  
+    alpha = event.rotationRate.alpha;
+    beta = event.rotationRate.beta;
+    
+    totalX += beta;
+    totalY += alpha;
 
-  function deviceOrientation(event) {
-    // если меняем ориентацию экрана в первый раз
-    if (!motionInitial.x && !motionInitial.y) {
-      motionInitial.x = event.beta;
-      motionInitial.x = event.gamma;
+    if (Math.abs(totalX) > maxOffset) {
+      totalX = maxOffset * Math.sign(totalX);
     }
-
-    switch (window.orientation) {
-      case 0: {
-        // если портретная ориентация
-        motion.x = event.gamma - motionInitial.y;
-        motion.y = event.beta - motionInitial.x;
-        break;
-      };
-      case 90: {
-        // если книжная ориентация наклон влево
-        motion.x = event.beta - motionInitial.x;
-        motion.y = -event.gamma + motionInitial.y;
-        break;
-      };
-      case -90: {
-        // если книжная ориентация наклон вправо
-        motion.x = -event.beta + motionInitial.x;
-        motion.y = event.gamma - motionInitial.y;
-        break;
-      }
-      default: {
-        // если наклон на себя (вниз)
-        motion.x = -event.gamma + motionInitial.y;
-        motion.y = -event.beta + motionInitial.x;
-      }
+    if (Math.abs(totalY) > maxOffset) {
+      totalY = maxOffset * Math.sign(totalY);
     }
+    
+    var xOffset = -totalY / 100;
+    var yOffset = totalX / 100;
 
+    motion.x = xOffset;
+    motion.y = yOffset;
 
-    var maxOffset = 23;
-
-    if (Math.abs(motion.x) > maxOffset) {
-      motion.x = motion.x < 0 ? -maxOffset : maxOffset
-    }
-
-    if (Math.abs(motion.y) > maxOffset) {
-      motion.x = motion.y < 0 ? -maxOffset : maxOffset
+    if (window.orientation === 90) {
+      motion.x = -xOffset;
+      motion.y = -yOffset;
+    } else if (window.orientation === -90) {
+      motion.x = xOffset;
+      motion.y = yOffset;
+    } else if (window.orientation === 180) {
+      motion.x = -yOffset;
+      motion.y = xOffset;
+    } else if (window.orientation === 0) {
+      motion.x = yOffset;
+      motion.y = -xOffset;
     }
   }
 
+  window.addEventListener('orientationchange', resetTotalCoords);
 
-  window.addEventListener('orientationchange', orientationChange);
-
-  function orientationChange() {
-    motionInitial.x = 0;
-    motionInitial.y = 0;
+  function resetTotalCoords() {
+    totalX = 0;
+    totalY = 0;	
   }
+
 })();
