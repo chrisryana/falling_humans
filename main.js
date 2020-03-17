@@ -105,8 +105,9 @@
 
     canvas.style.transform = "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)";
 
-    layers.forEach(function(layer, index) {
+    layers.forEach(function(layer) {
       layer.position = getOffset(layer);
+
       if (layer.blend) {
         context.globalCompositeOperation = layer.blend;
       } else {
@@ -116,6 +117,7 @@
       context.globalAlpha = layer.opacity;
       context.drawImage(layer.img, layer.position.x, layer.position.y);
     });
+
     requestAnimationFrame(drawCanvas);
   }
 
@@ -163,7 +165,7 @@
 
   function pointerMove(event) {
     event.preventDefault();
-    if (moving) {
+    if (moving === true) {
       var currentX = 0;
       var currentY = 0;
       if (event.type === 'touchmove') {
@@ -240,6 +242,17 @@
         motion.x = -event.gamma + motionInitial.y;
         motion.y = -event.beta + motionInitial.x;
       }
+    }
+
+
+    var maxOffset = 23;
+
+    if (Math.abs(motion.x) > maxOffset) {
+      motion.x = motion.x < 0 ? -maxOffset : maxOffset
+    }
+
+    if (Math.abs(motion.y) > maxOffset) {
+      motion.x = motion.y < 0 ? -maxOffset : maxOffset
     }
   }
 
