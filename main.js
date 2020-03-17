@@ -207,7 +207,6 @@
   //// GYROSCOPE /////
 
   var motion = {x: 0, y: 0};
-  var motionButton = document.getElementById('.motionButton');
   var alpha = 0;
   var beta = 0;
   var totalX = 0;
@@ -258,12 +257,4 @@
     totalY = 0;	
   }
 
-  if (window.DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) {
-    motion_button.classList.add('visible');
-  }
-
-  function enableMotion() {
-    DeviceOrientationEvent.requestPermission();
-    motionButton.classList.remove('visible');
-  }
 // })();
