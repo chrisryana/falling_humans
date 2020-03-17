@@ -164,7 +164,11 @@
   window.addEventListener('mousemove', pointerMove);
 
   function pointerMove(event) {
-    event.preventDefault();
+    if (event.type !== 'touchmove') {
+      // тк выскакивает ошибка изза пассивного события
+      event.preventDefault();
+    }
+
     if (moving === true) {
       var currentX = 0;
       var currentY = 0;
@@ -180,13 +184,9 @@
     }
   }
 
-
-  canvas.addEventListener('touchmove', preventDefault);
-  canvas.addEventListener('mousemove', preventDefault);
-
-  function preventDefault(event) {
+  canvas.addEventListener('mousemove', function (event) {
     event.preventDefault();
-  }
+  });
 
 
   window.addEventListener('touchend', endGesture);
