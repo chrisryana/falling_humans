@@ -1,12 +1,23 @@
-# 3D  Иллюстрация
+# 3D  Иллюстрация Falling Humans
 
-Чтобы запустить у себя достаточно просто клонировать репозиторий на компьютер и запустить `index.html` в браузере.
+## Как посмотреть
 
-Если лень проводить такие манипуляции можно просто открыть данный проект в glitch по ссылке <https://falling-humans.glitch.me>. На glitch я размещаю свои любимые проекты.
+Чтобы запустить достаточно просто клонировать репозиторий на компьютер и открыть `index.html` в браузере.
 
-Если уж лень и по ссылке перейти, то можно взглянуть на гифки, но на них все не так красиво, как в жизни.
+Посмотреть в живую и подергать иллюстрацию туда-сюда можно просто открыв данный проект в glitch по ссылке <https://falling-humans.glitch.me>. На glitch я размещаю свои любимые проекты.
 
-![](https://github.com/christofer1501/parallax_illustration/blob/master/gif/desktop.gif)
-![](https://github.com/christofer1501/parallax_illustration/blob/master/gif/mobile.gif)
+## Структура проекта
 
-Этот маленький эксперимент сделан благодаря [курсу иллюстратора Jarom Vogel](https://www.skillshare.com/classes/Art-Code-Create-and-Code-an-Interactive-Parallax-Illustration/1862124549?via=user-profile) и его вдохновляющему твиттеру
+- **`index.html`** – разметка страницы, включающая в себя `div` контейнер и `canvas`.
+- **`main.css`** – стили для контейнера и `canvas`.
+- **`main.js`** – логика для работы с `canvas` и иллюстрацией.
+- **`tween.js`** – небольшой кусок кода скопированный из библиотеки `tween.js`. Благодаря ему, когда ты отпускаешь иллюстрацию курсором, она плавно возвращается в исходное положение.
+- **`img`** – папка со слоями иллюстрации
+- **`gif`** – папка с гифками для вставки в данную доку.
+
+## Примеры работы параллакса:
+![Дэсктопная версия](https://github.com/christofer1501/parallax_illustration/blob/master/gif/desktop.gif)
+![Мобильная версия](https://github.com/christofer1501/parallax_illustration/blob/master/gif/mobile.gif)
+
+----
+>Этот маленький эксперимент сделан благодаря [курсу иллюстратора Jarom Vogel](https://www.skillshare.com/classes/Art-Code-Create-and-Code-an-Interactive-Parallax-Illustration/1862124549?via=user-profile) и его вдохновляющему твиттеру
