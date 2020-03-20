@@ -8,7 +8,7 @@
 
 ## Важно! По умолчанию в Safari отключена реакция на гироскоп
 Для корректной работы необходимо зайти в Настройки – Safari и включить "Движение и ориентацию".
-![Настройки](https://raw.githubusercontent.com/christofer1501/falling_humans/assets/settings.gif)
+![Настройки](https://raw.githubusercontent.com/christofer1501/falling_humans/f5845e3f834766a7f42d94e300ecc5d4c92279c9/settings.gif)
 
 ## Структура проекта
 
@@ -19,7 +19,7 @@
 - **`img`** – папка со слоями иллюстрации
 
 ## Примеры работы параллакса:
-![Дэсктопная версия](https://raw.githubusercontent.com/christofer1501/falling_humans/assets/desktop.gif)
-![Мобильная версия](https://raw.githubusercontent.com/christofer1501/falling_humans/assets/mobile.gif)
+![Дэсктопная версия](https://raw.githubusercontent.com/christofer1501/falling_humans/f5845e3f834766a7f42d94e300ecc5d4c92279c9/desktop.gif)
+![Мобильная версия](https://raw.githubusercontent.com/christofer1501/falling_humans/f5845e3f834766a7f42d94e300ecc5d4c92279c9/mobile.gif)
 
 >Этот маленький эксперимент сделан благодаря [курсу иллюстратора Jarom Vogel](https://www.skillshare.com/classes/Art-Code-Create-and-Code-an-Interactive-Parallax-Illustration/1862124549?via=user-profile) и его вдохновляющему твиттеру
