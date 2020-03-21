@@ -41,8 +41,6 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  visibility: visible;
-  opacity: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
